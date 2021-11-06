@@ -5,13 +5,43 @@
   padding: 10px;
   width: 100%;
   border-radius: 2px;
-}
 
-.todos__todo {
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
+  .todos__left-container {
+    flex: 1;
+    margin-right: 50px;
+  }
 
+  .todos__todo {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+  
+    input {
+      padding: 14px;
+      width: 100%;
+      margin-bottom: 10px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: none;
+      box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+      outline: none;
+
+      &::placeholder {
+        text-decoration: none;
+      }
+    }
+  
+    textarea {
+      padding: 14px;
+      width: 100%;
+      height: auto;
+      resize: vertical;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+    }
+  }
 }
 
 .todos__tittle {
@@ -42,13 +72,24 @@
 
 .todos__date {
   display: block;
-  margin-bottom: 4px;
   text-decoration: none;
   font-size: 16px;
   font-style: italic;
   text-align: left;
-  margin-bottom: 10px;
   color: rgb(126, 126, 126);
+}
+
+.todos__btns {
+  display: flex;
+  flex-direction: column;
+}
+
+.done {
+  background-color: rgb(212, 212, 212) !important;
+}
+
+.doneBtn {
+  background-color: rgb(118, 173, 224) !important;
 }
 
 .todos__todo button {
@@ -58,11 +99,14 @@
   font-weight: bold;
   font-size: 16px;
   border-radius: 4px;
-  padding: 10px;
+  padding: 10px 20px;
   outline: none;
-  margin-left: 10px;
-  height: 40px;
+  height: 35px;
   cursor: pointer;
+
+  & + button {
+    margin-top: 10px;
+  }
 
   &:hover {
     opacity: .8;

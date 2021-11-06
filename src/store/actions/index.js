@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO } from "../../constants";
+import { ADD_TODO, DELETE_TODO, EDIT_TODO, DONE_TODO } from "../../constants";
 
 export const addTodo = (todo) => ({
   type: ADD_TODO,
@@ -10,7 +10,14 @@ export const deleteTodo = (todoId) => ({
   todoId
 });
 
-export const editTodo = (todoId) => ({
-  type: CHANGE_PASSWORD_INPUT,
-  EDIT_TODO
+export const editTodo = (todoId, todoTitle, todoText) => ({
+  type: EDIT_TODO,
+  todoId,
+  todoTitle,
+  todoText
+});
+
+export const doneTodo = (todoId) => ({
+  type: DONE_TODO,
+  todoId
 });

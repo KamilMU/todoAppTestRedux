@@ -20,6 +20,7 @@ export function AddTodoForm() {
         id: Date.now(),
         title: inputValues.title,
         text: inputValues.text,
+        status: "open",
         date: format(new Date(), "dd/MM/yyyy(HH:mm)")
       }));
     }
