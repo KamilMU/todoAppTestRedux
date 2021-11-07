@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { filterTodosByStatus } from '../../store/actions';
 import './styles.scss';
 
 const checkboxes = [
@@ -7,7 +9,13 @@ const checkboxes = [
   { name: 'solved', alias: 'решенные' }
 ];
 
-export function Filters({ onFilterChange }) {
+export function Filters() {
+  const dispatch = useDispatch();
+
+  function onFilterChange({ target }) {
+    dispatch(filterTodosByStatus(target.name, target.checked));
+  }
+
   return (
     <div className={'filters'}>
       {checkboxes.map((checkbox, index) => (

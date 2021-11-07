@@ -35,21 +35,17 @@ export function TodoItem({ todo, deleteTodo, doneTodo, saveEditedTodo }) {
             {!isEditBtnClicked ? (
               <b
                 onClick={doneTodo}
-                style={{
-                  textDecoration: todo.status === 'done' && "line-through"
-                }}>
+                className={todo.status === 'done' ? 'line-through' : ''}>
                 {todo.title}
               </b>)
               : (
-                <input value={inputValues.title} name="title" onChange={onInputChange} />
+                <input value={inputValues.title} name='title' onChange={onInputChange} />
               )}
-            {todo.status === 'inWork' && (<span className={'inWork'}>in work!</span>)}
-            {todo.status === 'open' && (<span className={'open'}>open</span>)}
+            {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork'}>in work!</span>)}
+            {!isEditBtnClicked &&  todo.status === 'open' && (<span className={'open'}>open</span>)}
           </div>
           {!isEditBtnClicked ? (
-            <div style={{
-              textDecoration: todo.status === 'done' && "line-through"
-            }}>
+            <div className={todo.status === 'done' ? 'line-through' : ''}>
               {todo.text}
             </div>) : (
             <textarea

@@ -1,42 +1,24 @@
-import { ADD_TODO, DELETE_TODO, DONE_TODO, EDIT_TODO } from "../../constants";
+import { ADD_TODO, DELETE_TODO, DONE_TODO, EDIT_TODO, FILTER_TODOS_BY_STATUS, mockData } from "../../constants";
 
 const initialState = {
-  todos: [
-    {
-      id: 1,
-      title: "Go for a walk",
-      text: "Walk at least 40min",
-      status: "done",
-      date: "20/10/2021"
-    },
-    {
-      id: 2,
-      title: "Eat a burger",
-      text: "eat a cheese burger",
-      status: "done",
-      date: "20/08/2021"
-    },
-    {
-      id: 3,
-      title: "watch a tv",
-      text: "watch some comedy show",
-      status: "inWork",
-      date: "20/10/2021"
-    }
-  ]
+  todos: [...mockData],
+  initialTodos: [...mockData]
 }
 
-export const reducer = (state = initialState, { type, todo, todoId, todoTitle, todoText }) => {
+export const reducer = (state = initialState, { type, todo, todoId, todoTitle, todoText, status, statusChecked }) => {
   switch (type) {
     case ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, todo]
+        todos: [...state.todos, todo],
+        initialTodos: [...state.initialTodos, todo],
       }
     case DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== todoId)
+        todos: state.todos.filter(todo => todo.id !== todoId),
+        initialTodos: state.initialTodos.filter(todo => todo.id !== todoId),
+
       }
     case DONE_TODO:
       return {
@@ -53,9 +35,8 @@ export const reducer = (state = initialState, { type, todo, todoId, todoTitle, t
         })
       }
     case EDIT_TODO:
-      return {
-        ...state,
-        todos: state.todos.map(todo => {
+      const editedTodos = (todos) => {
+        return todos.map(todo => {
           if (todo.id === todoId) {
             return {
               ...todo,
@@ -66,6 +47,26 @@ export const reducer = (state = initialState, { type, todo, todoId, todoTitle, t
 
           return todo;
         })
+      }
+      
+      return {
+        ...state,
+        todos: editedTodos(state.todos),
+        initialTodos: editedTodos(state.initialTodos),
+      }
+    case FILTER_TODOS_BY_STATUS:
+      if (statusChecked) {
+        return {
+          ...state,
+          todos: state.todos.filter(todo => {
+            return todo.status === status
+          })
+        }
+      } else {
+        return {
+          ...state,
+          todos: state.initialTodos
+        }
       }
     default:
       return state;
