@@ -6,7 +6,7 @@ import './styles.scss';
 const checkboxes = [
   { name: 'open', alias: 'открытые' },
   { name: 'inWork', alias: 'в работе' },
-  { name: 'solved', alias: 'решенные' }
+  { name: 'done', alias: 'решенные' }
 ];
 
 export function Filters() {

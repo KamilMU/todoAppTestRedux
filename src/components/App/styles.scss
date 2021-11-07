@@ -6,6 +6,11 @@
   overflow: auto;
   position: relative;
 
+  & > button {
+    margin: 20px auto; 
+    display: block;
+  }
+
   @media (max-width: 770px) {
     padding: 10px;
   }

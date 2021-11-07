@@ -4,9 +4,7 @@ import { addTodo } from '../../store/actions';
 import { useDispatch } from 'react-redux';
 import { format } from 'date-fns';
 
-export function AddTodoForm() {
-  // const [inputTittle, setInputTittle] = useState('');
-  // const [inputText, setInputText] = useState('');
+export function AddTodoForm({ closeModal }) {
   const [inputValues, setInputValues] = useState({
     title: '',
     text: ''
@@ -24,11 +22,14 @@ export function AddTodoForm() {
         date: format(new Date(), "dd/MM/yyyy(HH:mm)")
       }));
     }
+
     setInputValues({
       ...inputValues,
       title: '',
       text: ''
     });
+
+    closeModal();
   }
 
   function onInputChange(e) {

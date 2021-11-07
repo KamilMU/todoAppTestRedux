@@ -41,8 +41,9 @@ export function TodoItem({ todo, deleteTodo, doneTodo, saveEditedTodo }) {
               : (
                 <input value={inputValues.title} name='title' onChange={onInputChange} />
               )}
-            {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork'}>in work!</span>)}
-            {!isEditBtnClicked &&  todo.status === 'open' && (<span className={'open'}>open</span>)}
+            {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork-status'}>in work!</span>)}
+            {!isEditBtnClicked && todo.status === 'open' && (<span className={'open-status'}>open</span>)}
+            {!isEditBtnClicked && todo.status === 'done' && (<span className={'done-status'}>done</span>)}
           </div>
           {!isEditBtnClicked ? (
             <div className={todo.status === 'done' ? 'line-through' : ''}>

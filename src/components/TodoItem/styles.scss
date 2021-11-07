@@ -54,12 +54,16 @@
   font-style: italic;
 }
 
-.inWork {
+.inWork-status {
   color: rgb(255, 129, 129);
 }
 
-.open {
+.open-status {
   color: rgb(66, 174, 207);
+}
+
+.done-status {
+  color: rgb(92, 189, 92);
 }
 
 .line-through {

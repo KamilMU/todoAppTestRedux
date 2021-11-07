@@ -1,0 +1,23 @@
+button {
+  padding: 16px 20px;
+  background-color: rgb(80, 134, 185); 
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    opacity: .8;
+    color: #fff;
+    transition: opacity .3s, color .4s;
+  }
+
+  &:active {
+    background-color: rgb(65, 96, 126); 
+    color: #fff;
+    transition: background-color .3s, color .4s;
+  }
+}
