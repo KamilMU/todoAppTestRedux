@@ -14,8 +14,6 @@ export function Header() {
     }
   }
 
-  useEffect(() => console.log(navbar), [navbar]);
-
   useEffect(() => {
     changeBackground()
     // adding the event when scroll change background
