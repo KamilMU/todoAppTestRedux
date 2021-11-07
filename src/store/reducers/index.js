@@ -1,30 +1,33 @@
-import { ADD_TODO, DELETE_TODO, DONE_TODO, EDIT_TODO, FILTER_TODOS_BY_STATUS, mockData } from "../../constants";
+import {
+  ADD_TODO, DELETE_TODO, DONE_TODO, EDIT_TODO,
+  FILTER_TODOS_BY_STATUS, mockData, SEARCH_TODO
+} from "../../constants";
 
 const initialState = {
   todos: [...mockData],
   initialTodos: [...mockData]
 }
 
-export const reducer = (state = initialState, { type, todo, todoId, todoTitle, todoText, status, statusChecked }) => {
-  switch (type) {
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
     case ADD_TODO:
       return {
         ...state,
-        todos: [...state.todos, todo],
-        initialTodos: [...state.initialTodos, todo],
+        todos: [...state.todos, action.todo],
+        initialTodos: [...state.initialTodos, action.todo],
       }
     case DELETE_TODO:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== todoId),
-        initialTodos: state.initialTodos.filter(todo => todo.id !== todoId),
+        todos: state.todos.filter(todo => todo.id !== action.todoId),
+        initialTodos: state.initialTodos.filter(todo => todo.id !== action.todoId),
 
       }
     case DONE_TODO:
       return {
         ...state,
         todos: state.todos.map(todo => {
-          if (todo.id === todoId && todo.status !== "done") {
+          if (todo.id === action.todoId && todo.status !== "done") {
             return {
               ...todo,
               status: "done"
@@ -37,29 +40,43 @@ export const reducer = (state = initialState, { type, todo, todoId, todoTitle, t
     case EDIT_TODO:
       const editedTodos = (todos) => {
         return todos.map(todo => {
-          if (todo.id === todoId) {
+          if (todo.id === action.todoId) {
             return {
               ...todo,
-              title: todoTitle,
-              text: todoText,
+              title: action.todoTitle,
+              text: action.todoText,
             }
           }
 
           return todo;
         })
       }
-      
+
       return {
         ...state,
         todos: editedTodos(state.todos),
         initialTodos: editedTodos(state.initialTodos),
       }
     case FILTER_TODOS_BY_STATUS:
-      if (statusChecked) {
+      if (action.statusChecked) {
         return {
           ...state,
           todos: state.todos.filter(todo => {
-            return todo.status === status
+            return todo.status === action.status
+          })
+        }
+      } else {
+        return {
+          ...state,
+          todos: state.initialTodos
+        }
+      }
+    case SEARCH_TODO:
+      if (action.searchTerm !== '') {
+        return {
+          ...state,
+          todos: state.todos.filter(todo => {
+            return todo?.title?.toString().charAt(0).toLowerCase() === action.searchTerm.toString().charAt(0).toLowerCase()
           })
         }
       } else {

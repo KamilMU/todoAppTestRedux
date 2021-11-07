@@ -1,4 +1,7 @@
-import { ADD_TODO, DELETE_TODO, EDIT_TODO, DONE_TODO, FILTER_TODOS_BY_STATUS } from "../../constants";
+import {
+  ADD_TODO, DELETE_TODO, EDIT_TODO, DONE_TODO,
+  FILTER_TODOS_BY_STATUS, SEARCH_TODO
+} from "../../constants";
 
 export const addTodo = (todo) => ({
   type: ADD_TODO,
@@ -26,4 +29,9 @@ export const filterTodosByStatus = (status, statusChecked) => ({
   type: FILTER_TODOS_BY_STATUS,
   status,
   statusChecked
+});
+
+export const searchTodo = (searchTerm) => ({
+  type: SEARCH_TODO,
+  searchTerm
 });
