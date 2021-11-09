@@ -22,7 +22,7 @@ export function Header() {
 
   return (
     <header className={navbar ? 'header scrolled-header' : 'header'}>
-      <a href="#">Logo</a>
+      <a href="#">Todo App Logo</a>
     </header>
   )
 }

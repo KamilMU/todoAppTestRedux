@@ -76,7 +76,7 @@ export const reducer = (state = initialState, action) => {
         return {
           ...state,
           todos: state.todos.filter(todo => {
-            return todo?.title?.toString().charAt(0).toLowerCase() === action.searchTerm.toString().charAt(0).toLowerCase()
+            return todo?.title?.toString().toLowerCase().includes(action.searchTerm.toString().toLowerCase());
           })
         }
       } else {
