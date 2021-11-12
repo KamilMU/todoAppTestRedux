@@ -1,5 +1,5 @@
 import {
-  ADD_TODO, DELETE_TODO, DONE_TODO, EDIT_TODO,
+  ADD_TODO, CHANGE_TODO_STATUS, DELETE_TODO, EDIT_TODO,
   FILTER_TODOS_BY_STATUS, mockData, SEARCH_TODO
 } from "../../constants";
 
@@ -23,14 +23,14 @@ export const reducer = (state = initialState, action) => {
         initialTodos: state.initialTodos.filter(todo => todo.id !== action.todoId),
 
       }
-    case DONE_TODO:
+    case CHANGE_TODO_STATUS:
       return {
         ...state,
         todos: state.todos.map(todo => {
-          if (todo.id === action.todoId && todo.status !== "done") {
+          if (todo.id === action.todoId && todo.status !== action.status) {
             return {
               ...todo,
-              status: "done"
+              status: action.status
             }
           }
 

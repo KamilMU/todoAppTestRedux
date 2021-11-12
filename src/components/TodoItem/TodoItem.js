@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editTodo } from '../../store/actions';
 import './styles.scss';
 
-export function TodoItem({ todo, deleteTodo, doneTodo, saveEditedTodo }) {
+export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo }) {
   const [inputValues, setInputValues] = useState({
     title: todo.title,
     text: todo.text
@@ -34,7 +34,6 @@ export function TodoItem({ todo, deleteTodo, doneTodo, saveEditedTodo }) {
           <div className={'todos__tittle'}>
             {!isEditBtnClicked ? (
               <b
-                onClick={doneTodo}
                 className={todo.status === 'done' ? 'line-through' : ''}>
                 {todo.title}
               </b>)
@@ -43,7 +42,7 @@ export function TodoItem({ todo, deleteTodo, doneTodo, saveEditedTodo }) {
               )}
             {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork-status'}>in work!</span>)}
             {!isEditBtnClicked && todo.status === 'open' && (<span className={'open-status'}>open</span>)}
-            {!isEditBtnClicked && todo.status === 'done' && (<span className={'done-status'}>done</span>)}
+            {!isEditBtnClicked && todo.status === 'done' && (<span className={'done-status'}>done ✔️</span>)}
           </div>
           {!isEditBtnClicked ? (
             <div className={todo.status === 'done' ? 'line-through' : ''}>
@@ -59,10 +58,19 @@ export function TodoItem({ todo, deleteTodo, doneTodo, saveEditedTodo }) {
           {!isEditBtnClicked && <button onClick={() => setISEditBtnClicked(true)}>
             Edit
           </button>}
-          {!isEditBtnClicked && <button onClick={doneTodo}
+          {!isEditBtnClicked && <button onClick={changeTodoStatus}
+            title="Make it done"
+            name="done"
             disabled={todo.status === 'done'}
             className={todo.status === 'done' ? 'done' : 'doneBtn'}>
-            Done
+            ✔️
+          </button>}
+          {!isEditBtnClicked && <button onClick={changeTodoStatus}
+            title="Make it in progress"
+            name="inWork"
+            disabled={todo.status === 'inWork'}
+            className={todo.status === 'inWork' ? 'inWork' : 'inWorkBtn'}>
+            ✍
           </button>}
           {!isEditBtnClicked && <button onClick={deleteTodo}>
             Delete

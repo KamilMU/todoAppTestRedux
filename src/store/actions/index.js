@@ -1,6 +1,6 @@
 import {
-  ADD_TODO, DELETE_TODO, EDIT_TODO, DONE_TODO,
-  FILTER_TODOS_BY_STATUS, SEARCH_TODO
+  ADD_TODO, DELETE_TODO, EDIT_TODO, FILTER_TODOS_BY_STATUS, 
+  SEARCH_TODO, CHANGE_TODO_STATUS
 } from "../../constants";
 
 export const addTodo = (todo) => ({
@@ -20,9 +20,10 @@ export const editTodo = (todoId, todoTitle, todoText) => ({
   todoText
 });
 
-export const doneTodo = (todoId) => ({
-  type: DONE_TODO,
-  todoId
+export const changeTodoStatus = (todoId, status) => ({
+  type: CHANGE_TODO_STATUS,
+  todoId,
+  status
 });
 
 export const filterTodosByStatus = (status, statusChecked) => ({

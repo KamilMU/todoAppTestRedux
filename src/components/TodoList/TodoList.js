@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTodo, doneTodo } from '../../store/actions';
+import { changeTodoStatus, deleteTodo, doneTodo } from '../../store/actions';
 import TodoItem from '../TodoItem';
 import './styles.scss';
 
@@ -15,7 +15,7 @@ export function TodoList() {
           <TodoItem
             todo={todo}
             deleteTodo={() => dispatch(deleteTodo(todo.id))}
-            doneTodo={() => dispatch(doneTodo(todo.id))}
+            changeTodoStatus={(e) => dispatch(changeTodoStatus(todo.id, e.target.name))}
             key={index}
           />
         ))}
