@@ -55,27 +55,43 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
             />)}
         </div>
         <div className="todos__btns">
-          {!isEditBtnClicked && <button onClick={() => setISEditBtnClicked(true)}>
-            Edit
-          </button>}
-          {!isEditBtnClicked && <button onClick={changeTodoStatus}
-            title="Make it done"
-            name="done"
-            disabled={todo.status === 'done'}
-            className={todo.status === 'done' ? 'done' : 'doneBtn'}>
-            ✔️
-          </button>}
-          {!isEditBtnClicked && <button onClick={changeTodoStatus}
-            title="Make it in progress"
-            name="inWork"
-            disabled={todo.status === 'inWork'}
-            className={todo.status === 'inWork' ? 'inWork' : 'inWorkBtn'}>
-            ✍
-          </button>}
-          {!isEditBtnClicked && <button onClick={deleteTodo}>
-            Delete
-          </button>}
-          {isEditBtnClicked && <button onClick={saveEditedTodo}>Save</button>}
+          {!isEditBtnClicked && (
+            <button
+              title="Edit TodoList"
+              onClick={() => setISEditBtnClicked(true)}>
+              ✏️
+            </button>)}
+          {!isEditBtnClicked && (
+            <button
+              onClick={changeTodoStatus}
+              title="Make it done"
+              name="done"
+              disabled={todo.status === 'done'}
+              className={todo.status === 'done' ? 'done' : 'doneBtn'}>
+              ✔️
+            </button>)}
+          {!isEditBtnClicked && (
+            <button
+              onClick={changeTodoStatus}
+              title="Make todo in progress"
+              name="inWork"
+              disabled={todo.status === 'inWork'}
+              className={todo.status === 'inWork' ? 'inWork' : 'inWorkBtn'}>
+              🚧
+            </button>)}
+          {!isEditBtnClicked && (
+            <button
+              className="deleteBtn"
+              onClick={deleteTodo}
+              title="Delete Todo">
+              ❌
+            </button>)}
+          {isEditBtnClicked && (
+            <button
+              className="saveBtn"
+              onClick={saveEditedTodo}>
+              Save
+            </button>)}
         </div>
       </div>
     </li>
