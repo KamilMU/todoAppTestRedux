@@ -40,7 +40,7 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
               : (
                 <input value={inputValues.title} name='title' onChange={onInputChange} />
               )}
-            {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork-status'}>in work!</span>)}
+            {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork-status'}>in work! 🚧</span>)}
             {!isEditBtnClicked && todo.status === 'open' && (<span className={'open-status'}>open</span>)}
             {!isEditBtnClicked && todo.status === 'done' && (<span className={'done-status'}>done ✔️</span>)}
           </div>
@@ -57,7 +57,7 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
         <div className="todos__btns">
           {!isEditBtnClicked && (
             <button
-              title="Edit TodoList"
+              title="Edit todo"
               onClick={() => setISEditBtnClicked(true)}>
               ✏️
             </button>)}
@@ -73,7 +73,7 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
           {!isEditBtnClicked && (
             <button
               onClick={changeTodoStatus}
-              title="Make todo in progress"
+              title="Make it in progress"
               name="inWork"
               disabled={todo.status === 'inWork'}
               className={todo.status === 'inWork' ? 'inWork' : 'inWorkBtn'}>
@@ -83,7 +83,7 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
             <button
               className="deleteBtn"
               onClick={deleteTodo}
-              title="Delete Todo">
+              title="Delete todo">
               ❌
             </button>)}
           {isEditBtnClicked && (
