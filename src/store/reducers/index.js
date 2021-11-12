@@ -26,7 +26,7 @@ export const reducer = (state = initialState, action) => {
     case CHANGE_TODO_STATUS:
       const changeTodoStatus = (todos) => {
         return todos.map(todo => {
-          if (todo.id === action.todoId && todo.status !== action.status) {
+          if (todo.id === action.todoId) {
             return {
               ...todo,
               status: action.status
