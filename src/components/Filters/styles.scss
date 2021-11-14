@@ -1,5 +1,7 @@
+@import '../../mixins';
+
 .filters {
-  display: flex;
+  @include displayFlex();
   justify-content: center;
   align-items: center;
   width: 100%;

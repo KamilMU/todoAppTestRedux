@@ -41,7 +41,7 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
                 <input value={inputValues.title} name='title' onChange={onInputChange} />
               )}
             {!isEditBtnClicked && todo.status === 'inWork' && (<span className={'inWork-status'}>in work! 🚧</span>)}
-            {!isEditBtnClicked && todo.status === 'open' && (<span className={'open-status'}>open</span>)}
+            {!isEditBtnClicked && todo.status === 'open' && (<span className={'open-status'}>open<span> 🔓</span></span>)}
             {!isEditBtnClicked && todo.status === 'done' && (<span className={'done-status'}>done ✔️</span>)}
           </div>
           {!isEditBtnClicked ? (
@@ -88,9 +88,10 @@ export function TodoItem({ todo, deleteTodo, changeTodoStatus, saveEditedTodo })
             </button>)}
           {isEditBtnClicked && (
             <button
+              title="Save changes"
               className="saveBtn"
               onClick={saveEditedTodo}>
-              Save
+              💾
             </button>)}
         </div>
       </div>

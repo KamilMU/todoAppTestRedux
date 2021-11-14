@@ -1,8 +1,10 @@
+@import '../../mixins';
+
 .add-todo-container {
   text-align: center;
   
   form {
-    display: flex;
+    @include displayFlex();
     flex-direction: column;
     max-width: 750px;
     margin: 0 auto;
@@ -15,7 +17,7 @@
     margin-bottom: 18px;
     border-radius: 4px;
     border: none;
-    box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+    @include boxShadow();
     outline: none;
   }
 
@@ -28,7 +30,7 @@
     border-radius: 4px;
     border: none;
     outline: none;
-    box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+    @include boxShadow();
   }
 
   button {
@@ -37,7 +39,7 @@
     font-weight: bold;
     font-size: 20px;
     border-radius: 4px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+    @include boxShadow();
     border: none;
     cursor: pointer;
     outline: none;

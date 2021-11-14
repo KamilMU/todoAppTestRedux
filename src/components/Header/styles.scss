@@ -1,8 +1,10 @@
+@import '../../mixins';
+
 .header {
   background-color: rgb(80, 134, 185); 
-  box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+  @include boxShadow(); 
   width: 100%;
-  display: 'flex';
+  @include displayFlex();
   padding: 16px; 
   justify-content: 'space-between';
   align-items: center;

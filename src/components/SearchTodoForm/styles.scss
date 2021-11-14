@@ -1,14 +1,16 @@
+@import '../../mixins';
+
 .search-todo-container {
   padding-top: 80px;
   text-align: center;
   
   form {
-    display: flex;
+    @include displayFlex();
     flex-direction: row;
     align-items: center;
     max-width: 750px;
     margin: 0 auto;
-    box-shadow: 0 0 6px rgba(0,0,0,0.5); 
+    @include boxShadow(); 
     border-radius: 6px;
 
     input {
