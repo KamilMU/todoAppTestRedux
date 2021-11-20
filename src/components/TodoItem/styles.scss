@@ -122,7 +122,7 @@
 }
 
 .todos__todo button {
-  @include boxShadow(); 
+  @include buttonShadow(); 
   border: none;
   background-color: rgb(80, 134, 185); 
   font-weight: bold;
